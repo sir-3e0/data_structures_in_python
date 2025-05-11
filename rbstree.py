@@ -4,16 +4,25 @@ class Node:
         self.left = None
         self.right = None
 
-
 def min_value(current_node):
-    while current_node.left is not None:
-        current_node = current_node.left
-    return current_node.value
-
+        while current_node.left is not None:
+            current_node = current_node.left
+        return current_node.value
 
 class BinarySearchTree:
     def __init__(self):
         self.root = None
+
+    def min_value(current_node):
+        while current_node.left is not None:
+            current_node = current_node.left
+        return current_node.value
+
+    def max_value(current_node):
+        while current_node.right is not None:
+            current_node = current_node.right
+        return current_node.value
+
 
     def insert(self, value):
         new_node = Node(value)
