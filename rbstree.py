@@ -4,11 +4,6 @@ class Node:
         self.left = None
         self.right = None
 
-def min_value(current_node):
-        while current_node.left is not None:
-            current_node = current_node.left
-        return current_node.value
-
 class BinarySearchTree:
     def __init__(self):
         self.root = None
@@ -98,7 +93,7 @@ class BinarySearchTree:
             elif current_node.right is None:
                 current_node = current_node.left
             else:
-                sub_tree_min = min_value(current_node.right)
+                sub_tree_min = self.min_value(current_node.right)
                 current_node.value = sub_tree_min
                 current_node.right = self.__delete_node(current_node.right, sub_tree_min)
         return current_node
