@@ -101,6 +101,60 @@ class BinarySearchTree:
     def delete_node(self, value):
         self.root = self.__delete_node(self.root, value)
 
+    def breath_first_traverse(self):
+        current_node = self.root
+        queue = []
+        results = []
+        queue.append(current_node)
+        while len(queue) > 0:
+            current_node = queue.pop(0)
+            results.append(current_node.value)
+            if current_node.left is not None:
+                queue.append(current_node.left)
+            if current_node.right is not None:
+                queue.append(current_node.right)
+        return results
+    
+    def pre_order_depth_first_travers(self):
+        results = []
+        def traverse(current_node):
+            results.append(current_node.value)
+            if current_node.left is not None:
+                traverse(current_node.left)
+            if current_node.right is not None:
+               traverse(current_node.right)
+        traverse(self.root)
+        return results
+    
+    def post_order_depth_first_traverse(self):
+        results = []
+        def traverse(current_node):
+            if current_node.left is not None:
+                traverse(current_node.left)
+            if current_node.right is not None:
+               traverse(current_node.right)
+            results.append(current_node.value)
+        traverse(self.root)
+        return results
+    def in_order_depth_first_traverse(self):
+        results = []
+        def traverse(current_node):
+            if current_node.left is not None:
+                traverse(current_node.left)
+            results.append(current_node.value)
+            if current_node.right is not None:
+               traverse(current_node.right)
+        traverse(self.root)
+        return results
+
+
+        
+
+        
+               
+
+
+
 my_tree = BinarySearchTree()
 my_tree.r_insert(2)
 my_tree.r_insert(1)
